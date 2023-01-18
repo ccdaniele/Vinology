@@ -3974,3 +3974,85 @@ Completed 200 OK in 60ms (Views: 53.5ms | ActiveRecord: 2.3ms | Allocations: 182
 [active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
 [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (57.95ms)
 {"method":"GET","path":"/api/v1/queries","format":"*/*","controller":"Api::V1::QueriesController","action":"index","status":200,"duration":67.28,"view":63.55,"db":3.3,"ddsource":"ruby","params":{}}
+   (6.8ms)  SELECT sqlite_version(*)
+  User Load (0.9ms)  SELECT "users".* FROM "users"
+   (2.5ms)  SELECT sqlite_version(*)
+  ActiveRecord::SchemaMigration Pluck (0.6ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC
+  User Load (0.8ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:22:in `show'
+  CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+[active_model_serializers]   Query Load (0.8ms)  SELECT "queries".* FROM "queries" WHERE "queries"."user_id" = ?  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/api/v1/auth_controller.rb:23:in `show'
+[active_model_serializers]   Car Load (1.0ms)  SELECT "cars".* FROM "cars" INNER JOIN "queries" ON "cars"."query_id" = "queries"."id" WHERE "queries"."user_id" = ?  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/api/v1/auth_controller.rb:23:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (57.4ms)
+{"method":"GET","path":"/api/v1/current_user","format":"*/*","controller":"Api::V1::AuthController","action":"show","status":200,"duration":138.77,"view":95.32,"db":4.23}
+  Query Load (0.2ms)  SELECT "queries".* FROM "queries"
+  ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   Car Load (0.3ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   User Load (1.1ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   Car Load (0.1ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   Car Load (1.0ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (275.47ms)
+{"method":"GET","path":"/api/v1/queries","format":"*/*","controller":"Api::V1::QueriesController","action":"index","status":200,"duration":294.09,"view":287.58,"db":6.18}
+  TRANSACTION (0.1ms)  begin transaction
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  User Exists? (0.2ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  User Create (1.2ms)  INSERT INTO "users" ("email", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["email", "user@gmail.com"], ["username", "user"], ["password_digest", "[FILTERED]"], ["created_at", "2023-01-18 04:58:40.273751"], ["updated_at", "2023-01-18 04:58:40.273751"]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  TRANSACTION (1.7ms)  commit transaction
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  User Exists? (0.2ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) AND "users"."id" != ? LIMIT ?  [["username", "user"], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:10:in `create'
+[active_model_serializers]   Query Load (0.2ms)  SELECT "queries".* FROM "queries" WHERE "queries"."user_id" = ?  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+[active_model_serializers]   Car Load (0.1ms)  SELECT "cars".* FROM "cars" INNER JOIN "queries" ON "cars"."query_id" = "queries"."id" WHERE "queries"."user_id" = ?  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.24ms)
+{"method":"POST","path":"/api/v1/users","format":"json","controller":"Api::V1::UsersController","action":"create","status":201,"duration":285.03,"view":27.53,"db":3.7,"unpermitted_params":["password_confirm"]}
+  User Load (0.2ms)  SELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?  [["username", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:6:in `create'
+[active_model_serializers]   Query Load (0.1ms)  SELECT "queries".* FROM "queries" WHERE "queries"."user_id" = ?  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/auth_controller.rb:11:in `create'
+[active_model_serializers]   Car Load (0.1ms)  SELECT "cars".* FROM "cars" INNER JOIN "queries" ON "cars"."query_id" = "queries"."id" WHERE "queries"."user_id" = ?  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/auth_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.2ms)
+{"method":"POST","path":"/api/v1/login","format":"*/*","controller":"Api::V1::AuthController","action":"create","status":202,"duration":310.26,"view":3.39,"db":0.47}
+  Query Load (0.1ms)  SELECT "queries".* FROM "queries"
+  ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   Car Load (0.3ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   User Load (0.1ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   Car Load (0.2ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   User Load (0.1ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   Car Load (0.1ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (18.28ms)
+{"method":"GET","path":"/api/v1/queries","format":"*/*","controller":"Api::V1::QueriesController","action":"index","status":200,"duration":20.35,"view":19.09,"db":1.03}
+  TRANSACTION (0.1ms)  begin transaction
+  ↳ app/controllers/api/v1/queries_controller.rb:4:in `create'
+  User Load (0.1ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/queries_controller.rb:4:in `create'
+  Query Create (0.4ms)  INSERT INTO "queries" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", ""], ["user_id", 8], ["created_at", "2023-01-18 04:58:50.203968"], ["updated_at", "2023-01-18 04:58:50.203968"]]
+  ↳ app/controllers/api/v1/queries_controller.rb:4:in `create'
+  TRANSACTION (0.9ms)  commit transaction
+  ↳ app/controllers/api/v1/queries_controller.rb:4:in `create'
+[active_model_serializers]   Car Load (0.1ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 7]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:6:in `create'
+[active_model_serializers] Rendered QuerySerializer with ActiveModelSerializers::Adapter::Attributes (2.26ms)
+{"method":"POST","path":"/api/v1/queries","format":"*/*","controller":"Api::V1::QueriesController","action":"create","status":202,"duration":10.36,"view":2.72,"db":1.63}

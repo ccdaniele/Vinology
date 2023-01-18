@@ -1,5 +1,5 @@
 require_relative "boot"
-require 'datadog/statsd'
+# require 'datadog/statsd'
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -51,15 +51,15 @@ module VinServer
     config.lograge.logger = ActiveSupport::Logger.new(File.join(Rails.root, 'log', "#{Rails.env}.log"))
 
     # This is useful if you want to log query parameters
-    config.lograge.custom_options = lambda do |event|
-        { :ddsource => 'ruby',
-          :params => event.payload[:params].reject { |k| %w(controller action).include? k }
-        }
-    end
+    # config.lograge.custom_options = lambda do |event|
+    #     { :ddsource => 'ruby',
+    #       :params => event.payload[:params].reject { |k| %w(controller action).include? k }
+    #     }
+    # end
 
-    Rails.application.secrets
-    # Create a DogStatsD client instance.
-    statsd = Datadog::Statsd.new('localhost', 8125)
+    # Rails.application.secrets
+    # # Create a DogStatsD client instance.
+    # statsd = Datadog::Statsd.new('localhost', 8125)
 
   end
 end

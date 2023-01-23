@@ -9,6 +9,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "dd-trace": "^1.5.1",
+    "hazelcast-client": "^5.1.0",
     "hot-shots": "^9.0.0",
     "jspdf": "^2.3.1",
     "prop-types": "^15.7.2",

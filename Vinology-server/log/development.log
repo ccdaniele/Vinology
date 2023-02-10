@@ -4056,3 +4056,80 @@ Completed 200 OK in 60ms (Views: 53.5ms | ActiveRecord: 2.3ms | Allocations: 182
 [active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:6:in `create'
 [active_model_serializers] Rendered QuerySerializer with ActiveModelSerializers::Adapter::Attributes (2.26ms)
 {"method":"POST","path":"/api/v1/queries","format":"*/*","controller":"Api::V1::QueriesController","action":"create","status":202,"duration":10.36,"view":2.72,"db":1.63}
+   (1.6ms)  SELECT sqlite_version(*)
+  ActiveRecord::SchemaMigration Pluck (1.1ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC
+  User Load (1.1ms)  SELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?  [["username", "daniel"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:6:in `create'
+{"method":"POST","path":"/api/v1/login","format":"*/*","controller":"Api::V1::AuthController","action":"create","status":500,"duration":93.78,"view":0.0,"db":3.56}
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/api/v1/auth_controller.rb:8:in `create'
+  TRANSACTION (0.2ms)  begin transaction
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  User Exists? (0.2ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?  [["username", "daniel"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  TRANSACTION (0.1ms)  rollback transaction
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  User Exists? (0.3ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?  [["username", "daniel"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:10:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+{"method":"POST","path":"/api/v1/users","format":"json","controller":"Api::V1::UsersController","action":"create","status":406,"duration":267.98,"view":11.43,"db":0.71,"unpermitted_params":["password_confirm"]}
+  User Load (0.4ms)  SELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?  [["username", "daniel"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:6:in `create'
+{"method":"POST","path":"/api/v1/login","format":"*/*","controller":"Api::V1::AuthController","action":"create","status":500,"duration":3.11,"view":0.0,"db":0.39}
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/api/v1/auth_controller.rb:8:in `create'
+  User Load (0.2ms)  SELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?  [["username", "daniel"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:6:in `create'
+{"method":"POST","path":"/api/v1/login","format":"*/*","controller":"Api::V1::AuthController","action":"create","status":500,"duration":1.45,"view":0.0,"db":0.16}
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/api/v1/auth_controller.rb:8:in `create'
+  TRANSACTION (0.2ms)  begin transaction
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  User Exists? (0.4ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?  [["username", "dede"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  User Create (1.7ms)  INSERT INTO "users" ("email", "username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["email", "dede@gmail.com"], ["username", "dede"], ["password_digest", "[FILTERED]"], ["created_at", "2023-02-08 01:40:12.409593"], ["updated_at", "2023-02-08 01:40:12.409593"]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  TRANSACTION (3.1ms)  commit transaction
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  User Exists? (0.5ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) AND "users"."id" != ? LIMIT ?  [["username", "dede"], ["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:10:in `create'
+[active_model_serializers]   Query Load (0.5ms)  SELECT "queries".* FROM "queries" WHERE "queries"."user_id" = ?  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+[active_model_serializers]   Car Load (0.3ms)  SELECT "cars".* FROM "cars" INNER JOIN "queries" ON "cars"."query_id" = "queries"."id" WHERE "queries"."user_id" = ?  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (119.41ms)
+{"method":"POST","path":"/api/v1/users","format":"json","controller":"Api::V1::UsersController","action":"create","status":201,"duration":485.1,"view":118.12,"db":9.95,"unpermitted_params":["password_confirm"]}
+  User Load (0.1ms)  SELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?  [["username", "dede"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:6:in `create'
+[active_model_serializers]   Query Load (0.1ms)  SELECT "queries".* FROM "queries" WHERE "queries"."user_id" = ?  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/auth_controller.rb:11:in `create'
+[active_model_serializers]   Car Load (0.2ms)  SELECT "cars".* FROM "cars" INNER JOIN "queries" ON "cars"."query_id" = "queries"."id" WHERE "queries"."user_id" = ?  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/auth_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.85ms)
+{"method":"POST","path":"/api/v1/login","format":"*/*","controller":"Api::V1::AuthController","action":"create","status":202,"duration":251.26,"view":4.26,"db":0.45}
+  Query Load (0.2ms)  SELECT "queries".* FROM "queries"
+  ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   Car Load (0.7ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   User Load (0.4ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   Car Load (0.2ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   User Load (0.8ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   Car Load (1.9ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   CACHE User Load (0.0ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   Car Load (0.1ms)  SELECT "cars".* FROM "cars" WHERE "cars"."query_id" = ?  [["query_id", 7]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers]   User Load (0.1ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/queries_controller.rb:14:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (138.57ms)
+{"method":"GET","path":"/api/v1/queries","format":"*/*","controller":"Api::V1::QueriesController","action":"index","status":200,"duration":161.73,"view":155.77,"db":4.84}

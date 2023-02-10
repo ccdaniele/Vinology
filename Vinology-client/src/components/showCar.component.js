@@ -50,7 +50,7 @@ class Show extends React.Component{
     
         const car_id = this.props.location.state
     
-          fetch(`http://localhost:3000/api/v1/cars/${car_id}`,{method: 'DELETE'})
+          fetch(`http://backend:3000/api/v1/cars/${car_id}`,{method: 'DELETE'})
           .then(rsp => rsp.json())
           .then(data=>{
 
@@ -69,7 +69,7 @@ class Show extends React.Component{
     componentDidMount(){
     const car_id =  this.props.location.state
         
-    fetch(`http://localhost:3000/api/v1/cars/${car_id}`)
+    fetch(`http://backend:3000/api/v1/cars/${car_id}`)
       .then(resp=>resp.json())
       .then(data=>{
           this.setState({car:data})

@@ -1,4 +1,10 @@
              
+v.1.1.4 - Installing: env variables
+            Adding ./.env: export NODE_OPTIONS=--openssl-legacy-provider
+            Installing npm i env-cmd https://www.npmjs.com/package/env-cmd
+            Modifying pkg.json/script 
+        
+
 v.1.1.3 - Allowing dynamyc host connection config/environments/development.rb <config.hosts << /[a-z0-9]+\.c9users\.io/> 
 
 v.1.1.2 - Monkeypatching openlegacy https://github.com/webpack/webpack/issues/14532#issuecomment-947515866 

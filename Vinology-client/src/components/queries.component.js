@@ -27,7 +27,7 @@ class queries extends Component{
     
     
   
-    fetch('http://localhost:3000/api/v1/queries')
+    fetch('http://backend:3000/api/v1/queries')
       .then(resp=>resp.json())
       .then(data=>{
      
@@ -55,7 +55,7 @@ class queries extends Component{
     const query_id = e.target.value
     this.handleLoading()
 
-      fetch(`http://localhost:3000/api/v1/queries/${query_id}`,{method: 'DELETE'})
+      fetch(`http://backend:3000/api/v1/queries/${query_id}`,{method: 'DELETE'})
       
         this.loadMyQueries()
         

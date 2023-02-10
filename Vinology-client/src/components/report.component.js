@@ -72,7 +72,7 @@ class Report extends React.Component{
         
         
       
-        fetch('http://localhost:3000/api/v1/queries')
+        fetch('http://backend:3000/api/v1/queries')
           .then(resp=>resp.json())
           .then(data=>{
          
@@ -118,7 +118,7 @@ class Report extends React.Component{
             })
           }
       
-          fetch('http://localhost:3000/api/v1/cars', newObj )
+          fetch('http://backend:3000/api/v1/cars', newObj )
           .then(resp => resp.json())
           .then(q=> {
 

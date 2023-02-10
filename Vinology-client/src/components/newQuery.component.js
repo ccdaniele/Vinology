@@ -45,7 +45,7 @@ class NewQuery extends Component{
       })
     }
 
-    fetch('http://localhost:3000/api/v1/queries',newObj)
+    fetch('http://backend:3000/api/v1/queries',newObj)
     .then(resp=>resp.json())
     .then(data=>{
 

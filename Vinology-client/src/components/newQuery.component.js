@@ -45,7 +45,7 @@ class NewQuery extends Component{
       })
     }
 
-    fetch('http://backend:3000/api/v1/queries',newObj)
+    fetch(`http://${process.env.REACT_APP_API_ENDPOINT}:${process.env.REACT_APP_API_PORT}/api/v1/queries`,newObj)
     .then(resp=>resp.json())
     .then(data=>{
 

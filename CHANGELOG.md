@@ -1,7 +1,7 @@
              
 v.1.1.4 - Installing: env variables
             Adding ./.env: export NODE_OPTIONS=--openssl-legacy-provider
-            Installing npm i env-cmd https://www.npmjs.com/package/env-cmd
+            Installing https://www.npmjs.com/package/check-react-env
             Modifying pkg.json/script 
         
 

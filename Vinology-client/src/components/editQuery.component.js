@@ -36,7 +36,7 @@ class Edit extends Component{
   
   
 
-  fetch('http://localhost:3000/api/v1/queries')
+  fetch(`http://${process.env.REACT_APP_API_ENDPOINT}:${process.env.REACT_APP_API_PORT}/api/v1/queries`)
     .then(resp=>resp.json())
     .then(data=>{
    
@@ -67,7 +67,7 @@ class Edit extends Component{
           })
         }
     
-        fetch(`http://localhost:3000/api/v1/queries/${queryId}`,newObj)
+        fetch(`http://${process.env.REACT_APP_API_ENDPOINT}:${process.env.REACT_APP_API_PORT}/api/v1/queries/${queryId}`,newObj)
         .then(resp=>resp.json())
         .then(data=>{
     

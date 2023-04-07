@@ -31,7 +31,7 @@ export default class Register extends Component {
             })
           }
        
-        fetch('http://localhost:3000/api/v1/users', newObj )
+        fetch(`http://${process.env.REACT_APP_API_ENDPOINT}:${process.env.REACT_APP_API_PORT}/api/v1/users`, newObj )
             .then(r => r.json())
             this.props.history.push('/login')
         }

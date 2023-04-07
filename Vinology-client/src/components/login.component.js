@@ -31,7 +31,7 @@ import {myQueries} from '../actions/query.action'
     
     
   
-    fetch('http://localhost:3000/api/v1/queries')
+    fetch(`http://${process.env.REACT_APP_API_ENDPOINT}:${process.env.REACT_APP_API_PORT}/api/v1/queries`)
       .then(resp=>resp.json())
       .then(data=>{
      
@@ -64,7 +64,7 @@ import {myQueries} from '../actions/query.action'
               password: ''
             })
 
-        fetch('http://localhost:3000//api/v1/login', newObj)
+        fetch(`http://${process.env.REACT_APP_API_ENDPOINT}:${process.env.REACT_APP_API_PORT}//api/v1/login`, newObj)
           
           .then(resp => resp.json())
           .then(data => {
